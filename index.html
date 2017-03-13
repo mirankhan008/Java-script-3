@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+   <title>Check a number is prime or not</title> 
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <h1>Prime number Checker</h1>
+ <script>
+                    function checkNumber() {
+                        var number = document.getElementById("number").value;
+                        if (!isNaN(number)) {
+                            if (isPrime(number)) {
+                                document.getElementById("result").innerHTML = number + " is prime!";
+                            }
+                            else {
+                                document.getElementById("result").innerHTML = number + " is not prime.";
+                            }
+                        }
+                        else {
+                            document.getElementById("result").innerHTML = "Please enter a number.";
+                        }
+                    }
+                    function isPrime(n) {
+
+                        // If n is less than 2 then by definition cannot be prime.
+                        if (n < 2) {return false}
+                        if (n != Math.round(n)) {return false}
+                        // Now assume that n is prime, we will try to prove that it is not.
+                        var isPrime = true;
+
+                        // Now check every whole number from 2 to the square root of n. If any of these divides n exactly, n cannot be prime.
+                        for (var i = 2; i <= Math.sqrt(n); i++) {
+                            if (n % i == 0) {isPrime = false}
+                        }
+
+                        // Finally return whether n is prime or not.
+                        return isPrime;
+
+                    }
+                </script>
+                <h3>Use the code to check if a number is prime!</h3>
+                <p>
+                    See the code in action below. Choose a number and test whether it is prime.
+                </p>
+                <input id="number" value="0" size="8" onclick="this.select()" />
+                <input type="button" value="Check for primality" onclick="checkNumber()" />
+                <p id="result">
+                    Enter a number in the box above.
+                </p>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
